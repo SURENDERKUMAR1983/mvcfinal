@@ -1,0 +1,94 @@
+﻿@model mvcfinal.Models.Register
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class="text-primary text-center">New User</h2>
+<br />
+<br />
+@using (Html.BeginForm())
+{<div class="container row bordered">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address)
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+
+            @*@<label class="col-lg-2 control-label">Radios</label>*@
+            <div class="col-10">
+                @Html.LabelFor(m => m.Gender)
+                <div class="radio">
+
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                        @Html.RadioButtonFor(m => m.Gender, 1)
+                        Male
+                    </label>
+
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        @Html.RadioButtonFor(m => m.Gender, 2)
+                        Female
+                    </label>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-10">
+
+                @*@<input type="password" class="form-control" id="inputPassword" placeholder="Password">*@ is Subscribe
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.Subscribe)
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+
+            @Html.LabelFor(m => m.CountryId)
+            @Html.DropDownListFor(m => m.CountryId, new SelectList(ViewBag.CountryList, "Id", "Name"), "Select Country", new { @Class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.StateId)
+            @Html.DropDownListFor(m => m.StateId, new SelectList(ViewBag.StateList, "Id", "Name"), "Select State", new { @Class = "form-control" })
+            @Html.ValidationMessageFor(m => m.StateId, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.CityId)
+            @Html.DropDownListFor(m => m.CityId, new SelectList(ViewBag.Citylist, "Id", "Name"), "Select City", new { @Class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success form-control" />
+        </div>
+    </div>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/cascading.Js"></script>
+}
+

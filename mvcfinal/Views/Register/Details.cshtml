@@ -1,0 +1,29 @@
+﻿@model mvcfinal.Models.Register
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="text-primary text-center">User Details</h2>
+<br />
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+         <th>Name</th><th>Address</th><th>Email</th><th>Gender</th><th>Subscribe</th><th>Country</th><th>State</th><th>City</th><th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+     <tr>
+       <td>@Model.Name</td>
+         <td>@Model.Address</td>
+         <td>@Model.Email</td>
+         <td>@Model.Gender</td>
+         <td>@Model.Subscribe</td>
+         <td>@Model.CountryId</td>
+         <td>@Model.StateId</td>
+         <td>@Model.CityId</td>
+     </tr>  
+     </tbody>
+</table>
+@Html.ActionLink("Edit","Edit",new {id=Model.Id })
+@Html.ActionLink("Back to List","Index")
+
